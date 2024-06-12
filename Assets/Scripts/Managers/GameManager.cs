@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,8 +14,6 @@ public class GameManager : MonoBehaviour
     private static PlayerUnit player;
     public static PlayerUnit Player => player;
 
-    private const int framePerSec = 50;
-
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
@@ -27,18 +26,9 @@ public class GameManager : MonoBehaviour
             instance = this;
     }
 
-    private void Start()
-    {
-    }
-
     public static void SetPlayer(PlayerUnit player)
     {
         GameManager.player = player;
     }
 
-    public static void SetTimeScale(float scale)
-    {
-        Time.timeScale = scale;
-        Time.fixedDeltaTime = Time.timeScale / framePerSec;
-    }
 }

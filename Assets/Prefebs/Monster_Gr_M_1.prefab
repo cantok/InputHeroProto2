@@ -149,20 +149,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c78e2a39d0f0fb149ab7b165e9935428, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletGO: {fileID: 6433798773826802276, guid: e03b0612a35654e4e8f29e14f2bd48b2, type: 3}
+  GO: {fileID: 0}
   bulletNum: 8
   shootType: 1
   bulletSpeedMin: 8
   bulletSpeedMax: 8
   bulletAngleMin: 0
   bulletAngleMax: 360
-  bulletDamageMin: 1
-  bulletDamageMax: 1
-  isHitOnce: 0
-  isDestroyAfterHit: 0
   lifeTime: 2
   lifeDistance: 5
-  triger: 0
   Unit: {fileID: 8970953380836227483}
   isPlayers: 0
 --- !u!1 &5153981087002109540
@@ -175,7 +170,7 @@ GameObject:
   m_Component:
   - component: {fileID: 196269149232444875}
   - component: {fileID: 3159343084099881554}
-  - component: {fileID: 280328942713987178}
+  - component: {fileID: 7205936791141870025}
   m_Layer: 7
   m_Name: HitBoxCapsule (1)
   m_TagString: Untagged
@@ -233,7 +228,7 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.5, y: 1}
   m_Direction: 0
---- !u!114 &280328942713987178
+--- !u!114 &7205936791141870025
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -242,7 +237,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5153981087002109540}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f539ca76bdf45741b39d9786c264243, type: 3}
+  m_Script: {fileID: 11500000, guid: c14eede09e1cf174985f43f5ac892bb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   priority: 0
@@ -256,7 +251,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7092189024987240163}
   - component: {fileID: 1708111519987235714}
-  - component: {fileID: 2873047915666159885}
+  - component: {fileID: 7902511451946372041}
   m_Layer: 7
   m_Name: HitBoxCapsule
   m_TagString: Untagged
@@ -314,7 +309,7 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.5, y: 1}
   m_Direction: 0
---- !u!114 &2873047915666159885
+--- !u!114 &7902511451946372041
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -323,7 +318,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5757943459277255318}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f539ca76bdf45741b39d9786c264243, type: 3}
+  m_Script: {fileID: 11500000, guid: c14eede09e1cf174985f43f5ac892bb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   priority: 0
@@ -532,6 +527,7 @@ MonoBehaviour:
     cooldownRate: 0
     jumpCount: 0
   isLookLeft: 0
+  canDamaged: 1
   findDistance: 5
   attackRange: 1
   attackWaitTime: 1
@@ -554,6 +550,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeedX: 0
   maxSpeedY: 0
+  fixSpeedX: 0
+  fixSpeedY: 0
+  speedCap: 0
 --- !u!1 &8565496094510106378
 GameObject:
   m_ObjectHideFlags: 0
@@ -598,19 +597,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c78e2a39d0f0fb149ab7b165e9935428, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletGO: {fileID: 6433798773826802276, guid: e03b0612a35654e4e8f29e14f2bd48b2, type: 3}
+  GO: {fileID: 0}
   bulletNum: 8
   shootType: 1
   bulletSpeedMin: 8
   bulletSpeedMax: 8
   bulletAngleMin: 5
   bulletAngleMax: 365
-  bulletDamageMin: 1
-  bulletDamageMax: 1
-  isHitOnce: 0
-  isDestroyAfterHit: 0
   lifeTime: 2
   lifeDistance: 5
-  triger: 0
   Unit: {fileID: 8970953380836227483}
   isPlayers: 0

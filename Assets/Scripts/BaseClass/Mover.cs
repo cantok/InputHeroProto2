@@ -24,8 +24,12 @@ public class Mover : MonoBehaviour
     { get { return maxSpeedY; } set { maxSpeedY = value; } }
 
     //속도 고정
+    [SerializeField]
     private bool fixSpeedX = false;
+    [SerializeField]
     private bool fixSpeedY = false;
+
+    public bool speedCap = true;
 
     public Vector2 Velocity
     {
@@ -51,7 +55,10 @@ public class Mover : MonoBehaviour
         {
             SetVelocityY();
         }
-        MaxSpeedCheck();
+        if (speedCap)
+        {
+            MaxSpeedCheck();
+        }
 
         PerformanceManager.StopTimer("Mover.FixedUpdate");
     }
@@ -77,7 +84,10 @@ public class Mover : MonoBehaviour
     {
         PerformanceManager.StartTimer("Mover.SetVelocityX");
         rb.velocity = new Vector2(targetSpeedX, rb.velocity.y);
-        MaxSpeedCheck();
+        if (speedCap)
+        {
+            MaxSpeedCheck();
+        }
         PerformanceManager.StopTimer("Mover.SetVelocityX");
     }
 
@@ -89,14 +99,7 @@ public class Mover : MonoBehaviour
     {
         targetSpeedX = speed;
         SetVelocityX();
-        if (!once)
-        {
-            fixSpeedX = false;
-        }
-        else
-        {
-            fixSpeedX = true;
-        }
+        fixSpeedX = !once;
     }
 
     /// <summary>
@@ -120,10 +123,11 @@ public class Mover : MonoBehaviour
     private void SetVelocityY()
     {
         PerformanceManager.StartTimer("Mover.SetVelocityY");
-        //Debug.Log(fixSpeedY);
-        //Debug.Log($"{gameObject.name}, {targetSpeedY}");
         rb.velocity = new Vector2(rb.velocity.x, targetSpeedY);
-        MaxSpeedCheck();
+        if (speedCap)
+        {
+            MaxSpeedCheck();
+        }
         PerformanceManager.StopTimer("Mover.SetVelocityY");
     }
 
@@ -135,14 +139,7 @@ public class Mover : MonoBehaviour
     {
         targetSpeedY = speed;
         SetVelocityY();
-        if (!once)
-        {
-            fixSpeedY = false;
-        }
-        else
-        {
-            fixSpeedY = true;
-        }
+        fixSpeedY = !once;
     }
 
     /// <summary>
@@ -191,7 +188,7 @@ public class Mover : MonoBehaviour
         targetSpeedY = 0;
         if (instant)
         {
-            SetVelocity(Vector2.zero);
+            SetVelocity(Vector2.zero, true);
         }
         PerformanceManager.StopTimer("Mover.StopMove");
     }
